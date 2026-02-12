@@ -1,0 +1,33 @@
+# --- DÉPENDANCES (Très Lourd) ---
+# On ne stocke jamais les librairies téléchargées.
+# "npm install" les recréera.
+/backend/node_modules
+/backend/.env
+
+node_modules/
+*/node_modules/
+
+package-lock.json  # (Optionnel : certains le gardent, d'autres non. Pour un template, on peut l'ignorer)
+yarn.lock
+pnpm-lock.yaml
+
+# --- SÉCURITÉ (Très Important) ---
+# Contient vos mots de passe. NE JAMAIS ENLEVER CETTE LIGNE.
+.env
+.env.local
+.env.*.local
+
+# --- SYSTÈME (Fichiers parasites) ---
+# Fichiers créés par Mac et Windows automatiquement
+.DS_Store
+Thumbs.db
+
+# --- BUILD (Fichiers générés) ---
+# Le résultat de la compilation React. On ne le versionne pas.
+dist/
+build/
+coverage/
+
+# --- IDE (Configuration locale) ---
+.vscode/
+.idea/

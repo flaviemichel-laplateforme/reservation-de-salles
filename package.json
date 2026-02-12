@@ -1,0 +1,17 @@
+{
+  "name": "my-fullstack-template",
+  "version": "1.0.0",
+  "description": "Un template fullstack moderne combinant un backend Node.js avec un frontend React, conçu pour démarrer rapidement vos projets web.",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install --prefix backend && npm install --prefix frontend",
+    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
