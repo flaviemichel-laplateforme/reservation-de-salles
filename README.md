@@ -139,6 +139,10 @@ VITE_API_URL=http://localhost:5000
 ### Tout installer d'un coup (depuis la racine)
 
 ```bash
+npm install
+```
+
+```bash
 npm run install-all
 ```
 

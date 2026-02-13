@@ -1,6 +1,8 @@
 import CreateReservation from '../models/reservation.model.js';
 
 
+
+
 export const createReservation = async (req, res) => {
     try {
         const userId = req.user.id;
@@ -10,6 +12,13 @@ export const createReservation = async (req, res) => {
             return res.status(400).json({ error: 'Tous les champs sont requis' });
         }
 
+        // On appelle directement la fonction importée
+        const hasConflict = await CreateReservation.checkConflict(date_resa, heure_debut, heure_fin);
+
+
+        if (hasConflict) {
+            return res.status(409).json({ message: "Créneau indisponible (conflit)." });
+        }
         //Pas de week-end
         const dateObj = new Date(date_resa);
         const day = dateObj.getDay();
@@ -44,12 +53,7 @@ export const createReservation = async (req, res) => {
 
         }
 
-        // On appelle directement la fonction importée
-        const hasConflict = await CreateReservation.checkConflit(date_resa, heure_debut, heure_fin);
 
-        if (hasConflict) {
-            return res.status(409).json({ message: "Créneau indisponible (conflit)." });
-        }
 
         const newId = await CreateReservation.createResa({
             user_id: userId,
@@ -67,5 +71,19 @@ export const createReservation = async (req, res) => {
     } catch (error) {
         console.error("Erreur Controller:", error);
         res.status(500).json({ error: 'Erreur serveur' });
+    }
+};
+
+export const getAllReservations = async (req, res) => {
+    try {
+        // 1. Appel au Modèle
+        const reservations = await CreateReservation.findAll();
+
+        // 2. Réponse (200 OK)
+        res.status(200).json(reservations);
+
+    } catch (error) {
+        console.error("Erreur Controller GetAll:", error);
+        res.status(500).json({ message: "Erreur lors de la récupération du planning." });
     }
 };
