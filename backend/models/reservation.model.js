@@ -3,10 +3,10 @@ import { query } from '../config/db.js';
 const Reservation = {
 
     //Vérifier si il y a des conflits
-    async checkConflict(date_resa, heure_debut, heure_fin, idToExclude) {
+    async checkConflict(date_resa, heure_debut, heure_fin, idToExclude = null) {
 
-        let sql = 'SELECT id FROM reservations WHERE date_resa = ? AND (heure_debut < ? AND heure_fin > ?)  AND id != ? ';
-        const params = (sql, [date_resa, heure_fin, heure_debut, idToExclude]);
+        let sql = 'SELECT id FROM reservations WHERE date_resa = ? AND (heure_debut < ? AND heure_fin > ?)';
+        const params = [date_resa, heure_fin, heure_debut];
 
         if (idToExclude) {
             sql += 'AND  id != ?';

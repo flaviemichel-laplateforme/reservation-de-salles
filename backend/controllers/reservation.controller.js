@@ -1,38 +1,5 @@
-import { Reservation } from '../models/reservation.model.js';
-
-
-const validateReservationRules = (date_resa, heure_debut, heure_fin, objet) => {
-
-    //Champs requis
-    if (!date_resa || !heure_debut || !heure_fin || !objet) {
-        return res.status(400).json({ error: 'Tous les champs sont requis' });
-    }
-    //Pas de week-end
-    const dateObj = new Date(date_resa);
-    const day = dateObj.getDay();
-    if (day === 0 || day === 6) {
-        return res.status(400).json({ message: "Réservations fermées le week-end." });
-    }
-    //Pas dans le passé 
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    if (new Date(date_resa) < today) {
-        return res.status(400).json({ message: "Impossible de réservé dans le passé." });
-    }
-    // 4. Durée et Cohérence
-    const getMinutes = (timeStr) => {
-        const [h, m] = timeStr.split(':').map(Number);
-        return h * 60 + m;
-    };
-    const startMin = getMinutes(heure_debut);
-    const endMin = getMinutes(heure_fin);
-
-    if (endMin <= startMin) return "L'heure de fin doit être après l'heure de début.";
-    if ((endMin - startMin) < 60) return "La réservation doit être d'1H minimum.";
-
-    return null;
-};
-
+import Reservation from '../models/reservation.model.js';
+import { validateReservationRules } from '../utils/reservation.validator.js';
 
 export const createReservation = async (req, res) => {
     try {

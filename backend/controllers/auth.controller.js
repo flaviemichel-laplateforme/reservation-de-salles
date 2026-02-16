@@ -1,4 +1,3 @@
-// controllers/auth.controller.js
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
 // Génère un token JWT
