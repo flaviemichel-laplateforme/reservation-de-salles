@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
+import Reservation from '../models/reservation.model.js';
 // Génère un token JWT
 const generateToken = (utilisateur) => {
     return jwt.sign(
@@ -61,7 +62,27 @@ export const login = async (req, res) => {
         res.status(500).json({ error: 'Erreur serveur' });
     }
 };
+
 // GET /api/auth/me
-export const getProfile = async (req, res) => {
-    res.json({ user: req.user });
+export const getMyProfile = async (req, res) => {
+    try {
+        const userId = req.user.id;
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ message: "Utilisateur introuvable" });
+        }
+
+        const myReservations = await Reservation.findByUserId(userId);
+
+        res.status(200).json({
+            infos: user,
+            reservations: myReservations
+        });
+
+    } catch (error) {
+        console.error("Erreur Controller Profile:", error);
+        res.status(500).json({ error: 'Erreur serveur lors de la recupération du profil' });
+    }
 };
+

@@ -55,7 +55,7 @@ VALUES (?, ?, ?, ?,?)`;
     },
 
     // Trouver réservation par ID
-    async findById(id) {
+    async findByUserId(id) {
 
         const sql = 'SELECT * FROM reservations WHERE id = ? ';
         const results = await query(sql, [id]);
