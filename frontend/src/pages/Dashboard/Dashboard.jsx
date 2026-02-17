@@ -7,7 +7,7 @@ function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-            <p>Bienvenue {user?.firstname} {user?.lastname} !</p>
+            <p>Bienvenue {user?.prenom} {user?.nom} !</p>
         </div>
     );
 }

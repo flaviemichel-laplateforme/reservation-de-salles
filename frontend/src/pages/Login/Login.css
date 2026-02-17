@@ -1,0 +1,166 @@
+.login-page {
+    min-height: 100vh;
+    background-image: url('/assets/img/fond.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.container-login {
+    background: rgba(10, 50, 70, 0.18);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 2px solid rgba(0, 170, 255, 0.6);
+    border-radius: 20px;
+    width: 350px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.4),
+        0 0 30px rgba(0, 170, 255, 0.2),
+        0 0 60px rgba(0, 170, 255, 0.1),
+        inset 0 0 30px rgba(0, 170, 255, 0.05);
+}
+
+.login-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.container-login form {
+    width: 100%;
+}
+
+.container-login form>div {
+    margin-bottom: 1.2rem;
+}
+
+.container-login label {
+    display: block;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.4rem;
+    font-size: 0.95em;
+}
+
+.container-login input {
+    width: 100%;
+    padding: 0.7em 1em;
+    border: 1.5px solid rgba(0, 170, 255, 0.4);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1em;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 5px rgba(0, 170, 255, 0.15);
+}
+
+.container-login input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.container-login input:focus {
+    border-color: rgba(0, 170, 255, 0.7);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 8px rgba(0, 170, 255, 0.4),
+        0 0 20px rgba(0, 170, 255, 0.15);
+}
+
+.container-login button {
+    width: 100%;
+    padding: 0.75em;
+    margin-top: 1.5rem;
+    border: 1.5px solid rgba(0, 170, 255, 0.5);
+    border-radius: 10px;
+    background-image: linear-gradient(180deg, rgba(0, 170, 255, 0.15) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(0, 170, 255, 0.15) 100%), url('/assets/img/bouton.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 8px rgba(0, 170, 255, 0.3),
+        0 0 20px rgba(0, 170, 255, 0.15);
+}
+
+.container-login button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 12px rgba(0, 170, 255, 0.5),
+        0 0 30px rgba(0, 170, 255, 0.25),
+        0 0 50px rgba(0, 170, 255, 0.1);
+}
+
+.container-login p {
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 1.5rem;
+    font-size: 0.9em;
+}
+
+.container-login p a {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.container-login p a:hover {
+    color: #dddbc3;
+}
+
+/*ERREUR*/
+/* --- Messages d'Erreur --- */
+.error-message {
+    background-color: #fee2e2;
+    /* Rouge très clair (fond) */
+    color: #b91c1c;
+    /* Rouge foncé (texte) */
+    border: 1px solid #fca5a5;
+    /* Bordure rouge clair */
+    padding: 10px 15px;
+    border-radius: 6px;
+    /* Coins arrondis */
+    margin-bottom: 20px;
+    /* Espace sous le message */
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease-in;
+    /* Petite animation d'apparition */
+}
+
+/* --- État de Chargement du Bouton --- */
+/* Rend le bouton un peu transparent quand on ne peut pas cliquer */
+button:disabled {
+    background-color: #9ca3af !important;
+    /* Gris */
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Petite animation bonus pour l'apparition */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

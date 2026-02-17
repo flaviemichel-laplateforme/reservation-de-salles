@@ -13,7 +13,7 @@ function Header() {
         <header>
 
             <nav>
-                <NavLink to="/">Accuei | </NavLink>
+                <NavLink to="/">Accueil | </NavLink>
                 {isAuthenticated && <NavLink to="/planning">Planning | </NavLink>}
                 {isAuthenticated && <NavLink to="/profile">Mon profil</NavLink>}
             </nav>

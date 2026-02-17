@@ -1,9 +1,8 @@
 import { createContext, useState, useEffect, useContext } from 'react';
-// Vérifie bien que le chemin vers ton service est correct selon ton architecture
 import { authService } from '../services/api.js';
 
 // 1. Création du contexte
-const AuthContext = createContext(null);
+export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState(null);

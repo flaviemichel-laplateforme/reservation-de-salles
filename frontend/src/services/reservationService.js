@@ -11,7 +11,7 @@ export const getAllReservations = async () => {
 
 // 2. Créer une réservation (POST)
 export const createReservation = async (reservationData) => {
-    return await fetchAPI(`reservations/${id}`, {
+    return await fetchAPI('/reservations', {
         method: 'POST',
         body: JSON.stringify(reservationData),
     });

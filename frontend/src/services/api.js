@@ -1,7 +1,7 @@
 // services/api.js
 const API_URL = 'http://localhost:5000/api';
 
-async function fetchAPI(endpoint, options = {}) {
+export async function fetchAPI(endpoint, options = {}) {
 
     const token = localStorage.getItem('token');
 
@@ -40,9 +40,9 @@ export const authService = {
         body: JSON.stringify({ email, password })
     }),
 
-    getProfile: (id, email, prenom, nom) => fetchAPI('/auth/me', {
+    getProfile: () => fetchAPI('/auth/me', {
         method: 'GET'
     })
 };
 
-export default fetchAPI;
+export { fetchAPI as default };
