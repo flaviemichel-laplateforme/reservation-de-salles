@@ -33,3 +33,5 @@ export const deleteReservation = async (id) => {
         method: 'DELETE',
     });
 }
+
+

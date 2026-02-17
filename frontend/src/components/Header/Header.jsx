@@ -11,10 +11,11 @@ function Header() {
     };
     return (
         <header>
-            <Link to="/">Starter Kit</Link>
+
             <nav>
-                <NavLink to="/">Accueil</NavLink>
-                {isAuthenticated && <NavLink to="/dashboard">Dashboard</NavLink>}
+                <NavLink to="/">Accuei | </NavLink>
+                {isAuthenticated && <NavLink to="/planning">Planning | </NavLink>}
+                {isAuthenticated && <NavLink to="/profile">Mon profil</NavLink>}
             </nav>
             <div>
                 {isAuthenticated ? (

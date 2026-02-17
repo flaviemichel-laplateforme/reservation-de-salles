@@ -1,6 +1,7 @@
 // components/PrivateRoute.jsx
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth.js';
+
 function PrivateRoute({ children }) {
     const { isAuthenticated, loading } = useAuth();
     const location = useLocation();
