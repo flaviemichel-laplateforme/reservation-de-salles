@@ -1,0 +1,234 @@
+/* =========================================
+   VARIABLES LOCALES
+   ========================================= */
+:root {
+    --bg-deep: #050a12;
+    --panel-bg: #0b1627;
+    --panel-border: #1e3a5f;
+    --neon-blue: #38bdf8;
+    --neon-glow: 0 0 12px rgba(56, 189, 248, 0.4);
+    --text-main: #f8fafc;
+    --text-muted: #7dd3fc;
+}
+
+/* =========================================
+   LAYOUT GLOBAL
+   ========================================= */
+.planning-wrapper {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.planning-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* =========================================
+   LÉGENDE (code couleur)
+   ========================================= */
+.planning-legend {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.legend-item {
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.legend-mine {
+    color: #f59e0b;
+}
+
+.legend-other {
+    color: #ef4444;
+}
+
+.legend-past {
+    color: #9ca3af;
+}
+
+/* --- BOUTONS --- */
+.btn-back {
+    background: transparent;
+    color: #555;
+    border: 1px solid #ccc;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.btn-back:hover {
+    color: var(--neon-blue);
+    border-color: var(--neon-blue);
+}
+
+.btn-back:hover .arrow {
+    transform: translateX(-5px);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--neon-blue), #2563eb);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    filter: brightness(1.2);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+/* =========================================
+   FULLCALENDAR - PERSONNALISATION
+   ========================================= */
+.calendar-fullcalendar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Boutons de navigation */
+.fc .fc-button-primary {
+    background-color: var(--neon-blue) !important;
+    border-color: var(--neon-blue) !important;
+    border-radius: 6px !important;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.fc .fc-button-primary:hover {
+    filter: brightness(1.1);
+}
+
+.fc .fc-button-primary:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+    background-color: #2563eb !important;
+    border-color: #2563eb !important;
+}
+
+/* Titre du calendrier */
+.fc .fc-toolbar-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1e293b;
+    text-transform: capitalize;
+}
+
+/* Jour actuel mis en évidence */
+.fc .fc-day-today {
+    background-color: rgba(56, 189, 248, 0.08) !important;
+}
+
+/* =========================================
+   MARQUEUR DE L'HEURE ACTUELLE (nowIndicator)
+   ========================================= */
+.fc .fc-timegrid-now-indicator-line {
+    border-color: #ef4444;
+    border-width: 2px;
+}
+
+.fc .fc-timegrid-now-indicator-arrow {
+    border-top-color: #ef4444;
+    border-width: 6px;
+}
+
+/* =========================================
+   ÉVÉNEMENTS — COULEURS PAR TYPE
+   ========================================= */
+.fc .fc-event {
+    border: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 4px solid;
+}
+
+.fc .fc-event:hover {
+    transform: scale(1.02);
+}
+
+/* Mes réservations — Jaune */
+.fc .event-mine {
+    border-left-color: #f59e0b;
+}
+
+.fc .event-mine:hover {
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+/* Réservations des autres — Rouge */
+.fc .event-other {
+    cursor: default;
+}
+
+.fc .event-other:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Créneaux passés — Gris */
+.fc .event-past {
+    opacity: 0.6;
+    cursor: default;
+    border-left-color: #9ca3af;
+}
+
+.fc .event-past:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* =========================================
+   CRÉNEAUX DU CALENDRIER
+   ========================================= */
+.fc .fc-timegrid-slot {
+    height: 50px;
+}
+
+.fc .fc-timegrid-slot:hover {
+    background-color: rgba(56, 189, 248, 0.04);
+}
+
+/* Créneaux passés grisés via le slot */
+.fc .fc-timegrid-col.fc-day-past {
+    background-color: #f8f9fa;
+}
+
+/* Loading */
+.planning-loading {
+    text-align: center;
+    padding: 60px;
+    font-size: 1.2rem;
+    color: #666;
+}

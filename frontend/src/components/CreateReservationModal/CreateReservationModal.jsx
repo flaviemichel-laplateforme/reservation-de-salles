@@ -1,16 +1,12 @@
 import { useState } from 'react';
 
-const EditReservationModal = ({ reservation, onClose, onSave }) => {
-    // On formate la date pour que l'input HTML la comprenne (YYYY-MM-DD)
-    // T00:00:00 évite le décalage UTC
-    const formattedDate = new Date(reservation.date_resa + 'T00:00:00').toISOString().split('T')[0];
-
-    // Le formulaire est pré-rempli avec les infos de la réunion cliquée
+const CreateReservationModal = ({ onClose, onSave, defaultDate = '' }) => {
+    // Le formulaire est pré-rempli avec la date cliquée sur le calendrier
     const [formData, setFormData] = useState({
-        objet: reservation.objet,
-        date_resa: formattedDate,
-        heure_debut: reservation.heure_debut,
-        heure_fin: reservation.heure_fin
+        objet: '',
+        date_resa: defaultDate,
+        heure_debut: '',
+        heure_fin: ''
     });
 
     const handleChange = (e) => {
@@ -20,20 +16,19 @@ const EditReservationModal = ({ reservation, onClose, onSave }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Attention ici : on envoie l'ID en plus des nouvelles données !
-            await onSave(reservation.id, formData);
-            onClose();
+            await onSave(formData); // On sauvegarde
+            onClose(); // On ferme la fenêtre si succès
         } catch (error) {
-            console.error("Erreur de modification", error);
+            console.error("Erreur de création", error);
+            // L'erreur est gérée par le toast du hook
         }
     };
 
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-
                 <div className="modal-header">
-                    <h3>Modifier la réservation</h3>
+                    <h3>Nouvelle Réservation</h3>
                     <button className="btn-close" onClick={onClose}>&times;</button>
                 </div>
 
@@ -42,7 +37,8 @@ const EditReservationModal = ({ reservation, onClose, onSave }) => {
                         <label>Objet de la réunion</label>
                         <input
                             type="text" name="objet"
-                            value={formData.objet} onChange={handleChange} required
+                            value={formData.objet} onChange={handleChange}
+                            required placeholder="Ex: Point d'équipe"
                         />
                     </div>
 
@@ -73,7 +69,7 @@ const EditReservationModal = ({ reservation, onClose, onSave }) => {
 
                     <div className="modal-actions">
                         <button type="button" className="btn-cancel" onClick={onClose}>Annuler</button>
-                        <button type="submit" className="btn-save">Enregistrer</button>
+                        <button type="submit" className="btn-save">Réserver la salle</button>
                     </div>
                 </form>
             </div>
@@ -81,4 +77,4 @@ const EditReservationModal = ({ reservation, onClose, onSave }) => {
     );
 };
 
-export default EditReservationModal;
+export default CreateReservationModal;

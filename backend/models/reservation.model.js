@@ -40,6 +40,7 @@ VALUES (?, ?, ?, ?,?)`;
         const sql = `
         SELECT
             r.id,
+            r.user_id,
             r.date_resa,
             r.heure_debut,
             r.heure_fin,

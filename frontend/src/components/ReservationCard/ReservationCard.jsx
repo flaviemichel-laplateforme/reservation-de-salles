@@ -1,6 +1,6 @@
 const ReservationCard = ({ reservation, onDelete, onEdit }) => {
-    // Formatage professionnel de la date
-    const dateFormatted = new Date(reservation.date_resa).toLocaleDateString('fr-FR', {
+    // On ajoute T00:00:00 pour éviter le décalage UTC → heure locale
+    const dateFormatted = new Date(reservation.date_resa + 'T00:00:00').toLocaleDateString('fr-FR', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
     });
 
