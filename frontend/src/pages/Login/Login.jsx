@@ -38,11 +38,11 @@ function Login() {
                         navigate(from, { replace: true });
                     }, 1000);
 
-                    return `Bienvenue ${data.prenom || 'Utilisateur'} !`;
+                    return `Bienvenue ${data.user?.prenom || 'Utilisateur'} !`;
                 },
                 error: (err) => {
                     // On peut personnaliser le message ici
-                    return "Email ou mot de passe incorrect 🤯";
+                    return "Email ou mot de passe incorrect !";
                 },
             }
         );
