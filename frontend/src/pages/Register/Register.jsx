@@ -22,7 +22,7 @@ function Register() {
         setLoading(true);
         try {
             await register({ prenom, nom, email, password, confirm_password: confirmPassword });
-            navigate('/dashboard', { replace: true });
+            navigate('/planning', { replace: true });
         } catch (err) {
             setError(err.message || "Erreur lors de l'inscription");
         } finally {

@@ -32,7 +32,7 @@ function Profile() {
                     </div>
                     <div className="user-info">
                         <h2>{user.prenom} {user.nom.toUpperCase()}</h2>
-                        <p className="user-email">✉️ {user.email}</p>
+                        <p className="user-email">{user.email}</p>
                     </div>
                 </header>
 

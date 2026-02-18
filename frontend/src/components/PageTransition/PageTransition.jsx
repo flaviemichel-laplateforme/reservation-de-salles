@@ -19,18 +19,15 @@ function PageTransition({ children }) {
         prevLocation.current = location.pathname;
         setIsTransitioning(true);
 
-        // Phase 1 : l'overlay couvre l'écran (600ms)
-        const midTimer = setTimeout(() => {
-            setDisplayChildren(children);
-        }, 600);
+        // Changer le contenu immédiatement (l'overlay le cache)
+        setDisplayChildren(children);
 
-        // Phase 2 : l'overlay se retire (1200ms total)
+        // Retirer l'overlay après l'animation
         const endTimer = setTimeout(() => {
             setIsTransitioning(false);
         }, 1200);
 
         return () => {
-            clearTimeout(midTimer);
             clearTimeout(endTimer);
         };
     }, [location.pathname, children]);
